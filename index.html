@@ -33,9 +33,15 @@
     }
     .question {
       font-size: 28px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       font-weight: 600;
       color: #1976d2;
+    }
+    .dica {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 20px;
+      font-style: italic;
     }
     input[type="text"] {
       width: 100%;
@@ -142,6 +148,7 @@
 
   <div class="container" id="game-screen">
     <div class="question" id="question"></div>
+    <div class="dica" id="dica"></div>
     <input type="text" id="input-resposta" placeholder="Digite o significado..." />
     <div class="tentativas-count" id="tentativas-count"></div>
     <div class="guess-list" id="guess-list"></div>
@@ -158,23 +165,28 @@
     const perguntas = [
       {
         palavra: "Inócuo",
-        corretas: ["Que não causa dano ou prejuízo", "Inofensivo", "Indiferente"]
+        corretas: ["Que não causa dano ou prejuízo", "Inofensivo", "Indiferente"],
+        dica: "Usado para algo que não tem efeito negativo."
       },
       {
         palavra: "Taciturno",
-        corretas: ["Reservado", "Calado", "Silencioso", "Introvertido"]
+        corretas: ["Reservado", "Calado", "Silencioso", "Introvertido"],
+        dica: "Descreve alguém que fala pouco."
       },
       {
         palavra: "Pérfido",
-        corretas: ["Traiçoeiro", "Desleal", "Infiel", "Malicioso"]
+        corretas: ["Traiçoeiro", "Desleal", "Infiel", "Malicioso"],
+        dica: "Relaciona-se à traição ou má-fé."
       },
       {
         palavra: "Austero",
-        corretas: ["Severo", "Rigoroso", "Simples", "Sóbrio"]
+        corretas: ["Severo", "Rigoroso", "Simples", "Sóbrio"],
+        dica: "Caracteriza algo ou alguém sem luxos, muitas vezes rígido."
       },
       {
         palavra: "Inequívoco",
-        corretas: ["Claro", "Evidente", "Indiscutível", "Incontestável"]
+        corretas: ["Claro", "Evidente", "Indiscutível", "Incontestável"],
+        dica: "Algo que não deixa dúvidas."
       }
     ];
 
@@ -199,6 +211,7 @@
     function carregarPergunta() {
       const p = perguntas[indiceAtual];
       document.getElementById("question").textContent = `O que significa "${p.palavra}"?`;
+      document.getElementById("dica").textContent = `Dica: ${p.dica}`;
       document.getElementById("guess-list").innerHTML = "";
       document.getElementById("tentativas-count").textContent = "Tentativas: 0";
       tentativas = [];
@@ -271,3 +284,4 @@
   </script>
 </body>
 </html>
+
